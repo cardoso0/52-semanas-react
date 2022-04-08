@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import { Menu } from "../components/Menu/Menu"
 import tabelaImg from '../img/tabela52semanas.png'
 import * as C from './HomeStyled'
@@ -26,7 +27,7 @@ export const Home = () => {
           </div>
           <div className="card">
             <p>Faça sua simulação em nossa calculadora.</p>
-            <button>Clique Aqui!</button>
+            <button><Link to="/desafio">Clique Aqui!</Link></button>
           </div>
         </C.Article>
       </C.Section>

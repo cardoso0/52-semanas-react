@@ -37,7 +37,12 @@ export const Table = () => {
   return (
     <div>
       <form onSubmit={calculo}>
-        <input type="number" name="valor" id="valor" value={input} onChange={e => setInput(e.target.value)} autoFocus='on' />
+        <input 
+          type="number" 
+          value={input} 
+          onChange={e => setInput(e.target.value)} 
+          autoFocus='on' 
+        />
         <button type="submit" >Calcular</button>
       </form>
       {show &&

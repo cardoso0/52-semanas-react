@@ -86,6 +86,10 @@ export const Article = styled.article`
       border: none;
       cursor: pointer;
     }
+    a {
+      text-decoration: none;
+      color: white;
+    }
   }
 
   @media (min-width: 760px){
