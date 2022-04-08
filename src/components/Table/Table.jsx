@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import * as C from './TableStyled'
+import * as S from './TableStyled'
 
 export const Table = () => {
 
@@ -35,18 +35,18 @@ export const Table = () => {
   }
 
   return (
-    <div>
-      <form onSubmit={calculo}>
-        <input 
-          type="number" 
-          value={input} 
-          onChange={e => setInput(e.target.value)} 
-          autoFocus='on' 
+    <S.Main>
+      <S.Form onSubmit={calculo}>
+        <input
+          type="text"
+          value={input}
+          onChange={e => setInput(e.target.value.replace(',', '.'))}
+          autoFocus='on'
         />
         <button type="submit" >Calcular</button>
-      </form>
+      </S.Form>
       {show &&
-        <C.Table>
+        <S.Table>
           <thead>
             <tr>
               <td>Semana</td>
@@ -58,13 +58,13 @@ export const Table = () => {
             {daysWeek.map((day, index) => (
               <tr key={index}>
                 <td>{day}</td>
-                <td>{(day * deposito)}</td>
-                <td>{guardar[index]}</td>
+                <td>{(day * deposito).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
+                <td>{guardar[index].toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
               </tr>
             ))}
           </tbody>
-        </C.Table>
+        </S.Table>
       }
-    </div>
+    </S.Main>
   )
 }
