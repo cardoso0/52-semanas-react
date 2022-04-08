@@ -3,6 +3,7 @@ import * as C from './TableStyled'
 
 export const Table = () => {
 
+  const [show, setShow] = useState(false)
   const [input, setInput] = useState('')
   const [deposito, setDeposito] = useState(0)
   const [guardar, setGuardar] = useState([])
@@ -22,27 +23,24 @@ export const Table = () => {
     })
   }
 
-  // const handleInput = event => {
-  //   setInput(event.target.value)
-  // }
-
   const calculo = (e) => {
     e.preventDefault()
     if (input) {
       setDeposito(input)
       valorGuardado()
       setGuardar(guardadoArr)
-      
     }
     setInput('')
+    setShow(true)
   }
-  
+
   return (
     <div>
       <form onSubmit={calculo}>
         <input type="number" name="valor" id="valor" value={input} onChange={e => setInput(e.target.value)} autoFocus='on' />
         <button type="submit" >Calcular</button>
       </form>
+      {show &&
         <C.Table>
           <thead>
             <tr>
@@ -61,6 +59,7 @@ export const Table = () => {
             ))}
           </tbody>
         </C.Table>
+      }
     </div>
   )
 }
