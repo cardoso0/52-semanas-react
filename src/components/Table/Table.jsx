@@ -3,50 +3,63 @@ import * as C from './TableStyled'
 
 export const Table = () => {
 
-  const [deposito, setDeposito] = useState()
-  const [guardar, setGuardar] = useState()
-  const [guardado, setGuardado] = useState()
+  const [input, setInput] = useState('')
+  const [deposito, setDeposito] = useState(0)
+  const [guardar, setGuardar] = useState([])
 
-  useEffect(() => {
-    setGuardado(guardar += deposito)
-  }, [guardar, deposito])
-
+  let guardado = 0
+  let guardadoArr = []
   let daysWeek = []
-  for(let i = 1; i <= 52; i++) {
+  for (let i = 1; i <= 52; i++) {
     daysWeek.push(i)
   }
+  const valorGuardado = () => {
+    daysWeek.forEach(item => {
+      let deposito = input * item
+      let guardar = guardado += deposito
+      guardadoArr.push(guardar)
+    })
+  }
 
-  const calculo = e => {
+  const handleInput = event => {
+    setInput(event.target.value)
+  }
+
+  const calculo = (e) => {
     e.preventDefault()
-    setDeposito(e.target.valor.value)
-    // setGuardar(guardado += deposito)
-    console.log(e.target.valor.value)
+    if (input) {
+      setDeposito(input)
+      valorGuardado()
+      setGuardar(guardadoArr)
+      console.log(guardar)
+    }
+    setInput('')
   }
 
   return (
     <div>
       <form onSubmit={calculo}>
-        <input type="text" name="valor" id="valor" />
+        <input type="number" name="valor" id="valor" value={input} onChange={handleInput} autoFocus='on' />
         <button type="submit" >Calcular</button>
       </form>
-      <C.Table>
-        <thead>
-          <tr>
-            <td>Semana</td>
-            <td>Depositar</td>
-            <td>Guardado</td>
-          </tr>
-        </thead>
-        <tbody>
-          {daysWeek.map((day, index) => (
-            <tr key={index}>
-              <td>{day}</td>
-              <td>{(day * deposito)}</td>
-              <td>{guardado}</td>
+        <C.Table>
+          <thead>
+            <tr>
+              <td>Semana</td>
+              <td>Depositar</td>
+              <td>Guardado</td>
             </tr>
-          ))}
-        </tbody>
-      </C.Table>
+          </thead>
+          <tbody>
+            {daysWeek.map((day, index) => (
+              <tr key={index}>
+                <td>{day}</td>
+                <td>{(day * deposito)}</td>
+                <td>{guardar[index]}</td>
+              </tr>
+            ))}
+          </tbody>
+        </C.Table>
     </div>
   )
 }
