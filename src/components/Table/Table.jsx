@@ -13,6 +13,7 @@ export const Table = () => {
   for (let i = 1; i <= 52; i++) {
     daysWeek.push(i)
   }
+
   const valorGuardado = () => {
     daysWeek.forEach(item => {
       let deposito = input * item
@@ -21,9 +22,9 @@ export const Table = () => {
     })
   }
 
-  const handleInput = event => {
-    setInput(event.target.value)
-  }
+  // const handleInput = event => {
+  //   setInput(event.target.value)
+  // }
 
   const calculo = (e) => {
     e.preventDefault()
@@ -31,15 +32,15 @@ export const Table = () => {
       setDeposito(input)
       valorGuardado()
       setGuardar(guardadoArr)
-      console.log(guardar)
+      
     }
     setInput('')
   }
-
+  
   return (
     <div>
       <form onSubmit={calculo}>
-        <input type="number" name="valor" id="valor" value={input} onChange={handleInput} autoFocus='on' />
+        <input type="number" name="valor" id="valor" value={input} onChange={e => setInput(e.target.value)} autoFocus='on' />
         <button type="submit" >Calcular</button>
       </form>
         <C.Table>
