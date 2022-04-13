@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename='/52-semanas-react'>
       <App />
     </BrowserRouter>
   </React.StrictMode>,
