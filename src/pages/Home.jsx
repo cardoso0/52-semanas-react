@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { Menu } from "../components/Menu/Menu"
-import tabelaImg from '../img/tabela52semanas.png'
+import tabelaImg from '../assets/img/tabela52semanas.png'
 import * as C from './HomeStyled'
 
 export const Home = () => {
