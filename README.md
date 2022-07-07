@@ -15,7 +15,7 @@
   <img width="320" src="src/assets/to_readme/01.gif">
 </p>
 
-Clique [aqui](https://cardoso0.github.io/pokedex/) para visualizar o projeto no seu navegador
+Clique [aqui](https://cardoso0.github.io/52-semanas-react/) para visualizar o projeto no seu navegador
 
 ### 🎲 Rodando o projeto na sua maquina
 
